@@ -17,22 +17,32 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-
+lang: en
 title: casCAD 
+tagline: casCAD
 email: rembern@126.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  casCAD is an open source DAO governance tools.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://cas2cad.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+permalink: pretty
 twitter_username: jekyllrb
 github_username:  jekyll
 
 # Build settings
-theme: minima
+# theme: minima
+# theme: bulma-clean-theme
+remote_theme: chrisrhymes/bulma-clean-theme
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - kramdown-parser-gfm
+  - jekyll-redirect-from
+
+paginate: 5
+paginate_path: "/blog/page:num"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -42,14 +52,33 @@ plugins:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      show_sidebar: true
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      author: "Will Holden"
+      layout: post
+      show_sidebar: true
+
+markdown: kramdown
+highlighter: rouge
